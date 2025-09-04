@@ -3,7 +3,7 @@ using UnityEngine.UIElements;
 
 public class GameUIController : MonoBehaviour
 {
-    public FoodCollector player;
+    public ObjectCollector player;
 
     private Label foodLabel;
     private Label healthLabel;

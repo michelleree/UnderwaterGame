@@ -3,37 +3,44 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;        // Bewegungsgeschwindigkeit
-    public float rotationSpeed = 100f;  // Drehgeschwindigkeit
+    public float moveSpeed = 5f;
+    public float rotationSpeed = 100f;
 
     private Rigidbody rb;
+    private PlayerInputActions inputActions;
+
+    private InputAction moveAction;
+    private InputAction ascendAction;
+    private InputAction descendAction;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+
+        inputActions = new PlayerInputActions();
+        inputActions.Enable();
+
+        moveAction = inputActions.Player.Move;
+        ascendAction = inputActions.Player.Ascend;
+        descendAction = inputActions.Player.Descend;
     }
 
     void FixedUpdate()
     {
-        // Input abfragen
-        float moveZ = 0f;
-        float moveX = 0f;
+        Vector2 input = moveAction.ReadValue<Vector2>();
+        float moveZ = input.y;
+        float moveX = input.x;
+
         float moveY = 0f;
+        if (ascendAction.IsPressed()) moveY = 1f;
+        if (descendAction.IsPressed()) moveY = -1f;
 
-        if (Keyboard.current.wKey.isPressed) moveZ = 1f;
-        if (Keyboard.current.sKey.isPressed) moveZ = -1f;
-        if (Keyboard.current.aKey.isPressed) moveX = -1f;
-        if (Keyboard.current.dKey.isPressed) moveX = 1f;
-        if (Keyboard.current.eKey.isPressed) moveY = 1f;
-        if (Keyboard.current.qKey.isPressed) moveY = -1f;
-
-        // Rotation links/rechts
         float turn = moveX * rotationSpeed * Time.fixedDeltaTime;
         rb.MoveRotation(rb.rotation * Quaternion.Euler(0f, turn, 0f));
 
-        // Direkte Bewegung (vorwärts/rückwärts + hoch/runter)
         Vector3 movement = transform.forward * moveZ + Vector3.up * moveY;
-        movement.Normalize(); // damit Diagonalbewegung nicht schneller wird
+        if (movement.sqrMagnitude > 1f) movement.Normalize();
+
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 }
