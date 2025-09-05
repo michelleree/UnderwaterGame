@@ -3,4 +3,56 @@
 
 .label {
     font-size: 50px;
+    -unity-text-align: upper-left;
+}
+
+.title-label {
+    -unity-font-style: bold;
+    font-size: 70px;
+    -unity-text-align: upper-center;
+    margin-top: 60px;
+    margin-right: 60px;
+    margin-bottom: 60px;
+    margin-left: 60px;
+}
+
+.button {
+    font-size: 70px;
+    width: 700px;
+    background-color: rgb(157, 174, 237);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    height: 130px;
+    margin-top: 50px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+}
+
+.quit-button {
+    background-color: rgb(237, 157, 163);
+}
+
+.play-button {
+}
+
+.play-button:hover {
+    background-color: rgb(104, 117, 162);
+    color: rgb(255, 255, 255);
+}
+
+.quit-button:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(143, 93, 97);
+}
+
+.main-button {
+    background-color: rgb(205, 213, 241);
+}
+
+.main-button:hover {
+    background-color: rgb(117, 121, 136);
+    color: rgb(255, 255, 255);
 }

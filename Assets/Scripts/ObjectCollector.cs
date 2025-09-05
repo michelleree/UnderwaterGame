@@ -8,6 +8,13 @@ public class ObjectCollector : MonoBehaviour
     
     public UnityEvent foodCollected;
     public UnityEvent trashCollected;
+    
+    private GameOverUI gameOverUI;
+    
+    private void Start()
+    {
+        gameOverUI = FindObjectOfType<GameOverUI>();
+    }
 
     void OnTriggerEnter(Collider collider)
     {
@@ -24,6 +31,17 @@ public class ObjectCollector : MonoBehaviour
             Destroy(collider.gameObject);
             Debug.Log("Health: " + health);
             trashCollected.Invoke();
+            
+            if (health <= 0)
+            {
+                GameOver();
+            }
         }
+    }
+    
+    void GameOver()
+    {
+        Debug.Log("Game Over");
+        gameOverUI.ShowGameOver();
     }
 }

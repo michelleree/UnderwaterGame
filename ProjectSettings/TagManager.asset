@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Food
   - Trash
+  - Ground
   layers:
   - Default
   - TransparentFX
