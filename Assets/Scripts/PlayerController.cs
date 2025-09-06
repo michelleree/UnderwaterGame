@@ -29,48 +29,33 @@ public class PlayerController : MonoBehaviour
         descendAction = inputActions.Player.Descend;
     }
 
-    void FixedUpdate()
+    void FixedUpdate() 
     {
-        Vector2 input = moveAction.ReadValue<Vector2>();
-        float moveZ = input.y;
-        float moveX = input.x;
+    Vector2 input = moveAction.ReadValue<Vector2>();
+    float moveZ = input.y;
+    float moveX = input.x;
 
-        float turn = moveX * rotationSpeed * Time.fixedDeltaTime;
-        rb.MoveRotation(rb.rotation * Quaternion.Euler(0f, turn, 0f));
+    float moveY = 0f;
+    if (ascendAction.IsPressed()) moveY = 1f;
+    if (descendAction.IsPressed()) moveY = -1f;
 
-        float moveY = 0f;
-        if (ascendAction.IsPressed())
-        {
-            moveY = 1f;
-        }
+    Vector3 inputDir = new Vector3(moveX, 0f, moveZ);
+    Vector3 worldDir = transform.rotation * inputDir;
 
-        if (descendAction.IsPressed())
-        {
-            moveY = -1f;
-        }
+    if (moveY != 0f)
+        worldDir += Vector3.up * moveY;
 
-        Vector3 inputDir = new Vector3(moveX, 0f, moveZ);
-        Vector3 worldDir = transform.rotation * inputDir;
+    if (worldDir.sqrMagnitude > 1f)
+        worldDir.Normalize();
 
-        if (moveY != 0f)
-        {
-            worldDir += Vector3.up * moveY;
-        }
+    Vector3 newPosition = rb.position + worldDir * moveSpeed * Time.fixedDeltaTime;
+    rb.MovePosition(newPosition);
 
-        if (worldDir.sqrMagnitude > 1f)
-        {
-            worldDir.Normalize();
-        }
-        rb.MovePosition(rb.position + worldDir * moveSpeed * Time.fixedDeltaTime);
-
-        float targetZ = moveX * maxLeanAngle;
-        Vector3 euler = model.localEulerAngles;
-        if (euler.z > 180f)
-        {
-            euler.z -= 360f;
-        }
-        euler.z = Mathf.Lerp(euler.z, targetZ, Time.fixedDeltaTime * leanSpeed);
-        model.localEulerAngles = euler;
+    float targetZ = moveX * maxLeanAngle;
+    Vector3 euler = model.localEulerAngles;
+    if (euler.z > 180f) euler.z -= 360f;
+    euler.z = Mathf.Lerp(euler.z, targetZ, Time.fixedDeltaTime * leanSpeed);
+    model.localEulerAngles = euler; 
     }
     
     public void DisableControls()

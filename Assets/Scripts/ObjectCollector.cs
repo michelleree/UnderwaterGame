@@ -21,14 +21,14 @@ public class ObjectCollector : MonoBehaviour
         if (collider.CompareTag("Food"))
         {
             foodCount++;
-            Destroy(collider.gameObject);
+            Destroy(collider.transform.parent.gameObject);
             Debug.Log("Food: " + foodCount);
             foodCollected.Invoke();
         }
         else if (collider.CompareTag("Trash"))
         {
             health--;
-            Destroy(collider.gameObject);
+            Destroy(collider.transform.parent.gameObject);
             Debug.Log("Health: " + health);
             trashCollected.Invoke();
             
