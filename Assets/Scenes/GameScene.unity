@@ -1485,7 +1485,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1191645916
 Transform:
   m_ObjectHideFlags: 0
@@ -1516,12 +1516,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1.65, y: 0.22, z: 1.44}
-  m_Center: {x: 0, y: -0.55, z: -0.08}
+  m_Size: {x: 1.65, y: 0.07, z: 1.44}
+  m_Center: {x: 0, y: -0.53, z: -0.08}
 --- !u!136 &1191645918
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1537,7 +1537,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -2249,7 +2249,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!4 &1930349180
 Transform:
@@ -2383,12 +2383,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1.65, y: 0.22, z: 1.44}
-  m_Center: {x: 0, y: -0.55, z: -0.08}
+  m_Size: {x: 1.65, y: 0.07, z: 1.44}
+  m_Center: {x: -0.14, y: 0.03, z: -0.26}
 --- !u!136 &1930349183
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2404,14 +2404,14 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.46
-  m_Height: 1.12
+  m_Radius: 0.3
+  m_Height: 0.82
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -0.12, y: 0.55, z: -0.18}
 --- !u!4 &1935619051 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7482480387602550355, guid: 570d7ff3fefdafe49850897140a386a7, type: 3}

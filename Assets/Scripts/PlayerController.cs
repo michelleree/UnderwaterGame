@@ -31,35 +31,50 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate() 
     {
-    Vector2 input = moveAction.ReadValue<Vector2>();
-    float moveZ = input.y;
-    float moveX = input.x;
+        Vector2 input = moveAction.ReadValue<Vector2>();
+        float moveZ = input.y;
+        float moveX = input.x;
 
-    float moveY = 0f;
-    if (ascendAction.IsPressed()) moveY = 1f;
-    if (descendAction.IsPressed()) moveY = -1f;
+        float moveY = 0f;
+        if (ascendAction.IsPressed()) moveY = 1f;
+        if (descendAction.IsPressed()) moveY = -1f;
 
-    Vector3 inputDir = new Vector3(moveX, 0f, moveZ);
-    Vector3 worldDir = transform.rotation * inputDir;
+        Vector3 inputDir = new Vector3(moveX, 0f, moveZ);
+        Vector3 worldDir = transform.rotation * inputDir;
 
-    if (moveY != 0f)
-        worldDir += Vector3.up * moveY;
+        if (moveY != 0f)
+            worldDir += Vector3.up * moveY;
 
-    if (worldDir.sqrMagnitude > 1f)
-        worldDir.Normalize();
+        if (worldDir.sqrMagnitude > 1f)
+            worldDir.Normalize();
 
-    Vector3 newPosition = rb.position + worldDir * moveSpeed * Time.fixedDeltaTime;
-    rb.MovePosition(newPosition);
+        Vector3 newPosition = rb.position + worldDir * moveSpeed * Time.fixedDeltaTime;
+        rb.MovePosition(newPosition);
 
-    float targetZ = moveX * maxLeanAngle;
-    Vector3 euler = model.localEulerAngles;
-    if (euler.z > 180f) euler.z -= 360f;
-    euler.z = Mathf.Lerp(euler.z, targetZ, Time.fixedDeltaTime * leanSpeed);
-    model.localEulerAngles = euler; 
+        // Lean rotation
+        float targetZ = moveX * maxLeanAngle;
+        Vector3 euler = model.localEulerAngles;
+        if (euler.z > 180f) euler.z -= 360f;
+        euler.z = Mathf.Lerp(euler.z, targetZ, Time.fixedDeltaTime * leanSpeed);
+        model.localEulerAngles = euler; 
     }
     
     public void DisableControls()
     {
         inputActions.Disable();
+    }
+    
+    public void EnableControls()
+    {
+        inputActions.Enable();
+    }
+
+    void OnDestroy()
+    {
+        if (inputActions != null)
+        {
+            inputActions.Disable();
+            inputActions.Dispose();
+        }
     }
 }

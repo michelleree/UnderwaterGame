@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class GameOverUI : MonoBehaviour
@@ -9,6 +8,8 @@ public class GameOverUI : MonoBehaviour
     private Button playAgainButton;
     private Button mainMenuButton;
     private Button quitButton;
+
+    private MainMenuUI mainMenuUI;
 
     private void Awake()
     {
@@ -24,11 +25,8 @@ public class GameOverUI : MonoBehaviour
         quitButton.clicked += OnQuitClicked;
 
         root.style.display = DisplayStyle.None;
-    }
 
-    private void OnMainMenuClicked()
-    {
-        SceneManager.LoadScene("MainMenuScene");
+        mainMenuUI = FindObjectOfType<MainMenuUI>();
     }
 
     public void ShowGameOver()
@@ -40,11 +38,27 @@ public class GameOverUI : MonoBehaviour
         {
             player.DisableControls();
         }
+
+        Time.timeScale = 0f;
     }
 
     private void OnPlayAgainClicked()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        root.style.display = DisplayStyle.None;
+
+        var player = FindObjectOfType<PlayerController>();
+        if (player != null)
+            player.EnableControls();
+
+        Time.timeScale = 1f;
+    }
+
+    private void OnMainMenuClicked()
+    {
+        root.style.display = DisplayStyle.None;
+
+        if (mainMenuUI != null)
+            mainMenuUI.ShowMainMenu();
     }
 
     private void OnQuitClicked()
