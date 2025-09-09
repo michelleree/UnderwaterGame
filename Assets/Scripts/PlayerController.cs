@@ -20,13 +20,21 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-
         inputActions = new PlayerInputActions();
-        inputActions.Enable();
 
         moveAction = inputActions.Player.Move;
         ascendAction = inputActions.Player.Ascend;
         descendAction = inputActions.Player.Descend;
+    }
+
+    void OnEnable()
+    {
+        inputActions.Enable();
+    }
+
+    void OnDisable()
+    {
+        inputActions.Disable();
     }
 
     void FixedUpdate() 
@@ -72,7 +80,6 @@ public class PlayerController : MonoBehaviour
     {
         if (inputActions != null)
         {
-            inputActions.Disable();
             inputActions.Dispose();
         }
     }

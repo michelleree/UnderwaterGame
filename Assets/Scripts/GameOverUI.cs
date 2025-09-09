@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class GameOverUI : MonoBehaviour
@@ -56,9 +57,6 @@ public class GameOverUI : MonoBehaviour
 
     private void OnMainMenuClicked()
     {
-        root.style.display = DisplayStyle.None;
-
-        if (mainMenuUI != null)
-            mainMenuUI.ShowMainMenu();
+        SceneManager.LoadScene("MainMenuScene");
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class MainMenuUI : MonoBehaviour
 {
@@ -8,8 +9,7 @@ public class MainMenuUI : MonoBehaviour
     private Button playButton;
     private Button setTimerButton;
     private Button quitButton;
-
-    private PlayerController player;
+    
     private SetTimerUI setTimerUI;
 
     private void Awake()
@@ -24,51 +24,32 @@ public class MainMenuUI : MonoBehaviour
         playButton.clicked += PlayButtonOnclicked;
         setTimerButton.clicked += SetTimerButtonOnclicked;
         quitButton.clicked += QuitButtonOnclicked;
-
-        root.style.display = DisplayStyle.None;
-
-        player = FindObjectOfType<PlayerController>();
+        
         setTimerUI = FindObjectOfType<SetTimerUI>();
+    }
+
+    private void Start()
+    {
+        Time.timeScale = 1f;
     }
 
     private void SetTimerButtonOnclicked()
     {
         HideMainMenu();
-        setTimerUI.ShowTimerUI();
-    }
 
-    private void Start()
-    {
-        ShowMainMenu();
-    }
-
-    public void ShowMainMenu()
-    {
-        root.style.display = DisplayStyle.Flex;
-        
-        if (player != null)
-            player.DisableControls();
-
-        Time.timeScale = 0f;
-    }
-
-    public void HideMainMenu()
-    {
-        root.style.display = DisplayStyle.None;
-        
-        if (player != null)
-            player.EnableControls();
-
-        Time.timeScale = 1f;
+        if (setTimerUI != null)
+        {
+            setTimerUI.ShowTimerUI();
+        }
     }
 
     private void PlayButtonOnclicked()
     {
-        var gameUI = FindObjectOfType<GameUI>();
-        if (gameUI != null)
-            gameUI.ResetFoodGoalLabel();
-        
-        HideMainMenu();
+        GameSettings.IsRunning = false;
+        GameSettings.CurrentTime = 0f;
+        GameSettings.FoodGoal = 0;
+
+        SceneManager.LoadScene("GameScene");
     }
 
     private void QuitButtonOnclicked()
@@ -77,5 +58,10 @@ public class MainMenuUI : MonoBehaviour
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
+    }
+    
+    public void HideMainMenu()
+    {
+        root.style.display = DisplayStyle.None;
     }
 }
