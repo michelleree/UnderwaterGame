@@ -7,7 +7,6 @@ public class GameOverUI : MonoBehaviour
     private VisualElement root;
     private Button playAgainButton;
     private Button mainMenuButton;
-    private Button quitButton;
 
     private MainMenuUI mainMenuUI;
 
@@ -18,11 +17,9 @@ public class GameOverUI : MonoBehaviour
 
         playAgainButton = root.Q<Button>("PlayAgainButton");
         mainMenuButton = root.Q<Button>("MainMenuButton");
-        quitButton = root.Q<Button>("QuitButton");
 
         playAgainButton.clicked += OnPlayAgainClicked;
         mainMenuButton.clicked += OnMainMenuClicked;
-        quitButton.clicked += OnQuitClicked;
 
         root.style.display = DisplayStyle.None;
 
@@ -49,6 +46,10 @@ public class GameOverUI : MonoBehaviour
         var player = FindObjectOfType<PlayerController>();
         if (player != null)
             player.EnableControls();
+        
+        var gameUI = FindObjectOfType<GameUI>();
+        if (gameUI != null)
+            gameUI.ResetFoodGoalLabel();
 
         Time.timeScale = 1f;
     }
@@ -59,13 +60,5 @@ public class GameOverUI : MonoBehaviour
 
         if (mainMenuUI != null)
             mainMenuUI.ShowMainMenu();
-    }
-
-    private void OnQuitClicked()
-    {
-        Application.Quit();
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#endif
     }
 }

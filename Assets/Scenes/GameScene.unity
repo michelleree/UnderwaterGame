@@ -763,6 +763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameUIController
   player: {fileID: 1930349177}
+  defaultFoodGoal: 1
 --- !u!114 &422736885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -920,6 +921,74 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 570d7ff3fefdafe49850897140a386a7, type: 3}
+--- !u!1 &560095260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 560095261}
+  - component: {fileID: 560095263}
+  - component: {fileID: 560095262}
+  m_Layer: 0
+  m_Name: GameWinUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &560095261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560095260}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 893839496}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &560095262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560095260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707eb87b4ea59f34d98989bc10a29739, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+--- !u!114 &560095263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560095260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
+  m_PanelSettings: {fileID: 11400000, guid: 9b10ed5b25fcb7140b619efb492e4815, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 853a2ab50a1c49c4cb84c31053028005, type: 3}
+  m_SortingOrder: 0
+  m_Position: 0
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
+  m_PivotReferenceSize: 0
+  m_Pivot: 0
+  m_WorldSpaceCollider: {fileID: 0}
 --- !u!1 &580776764
 GameObject:
   m_ObjectHideFlags: 0
@@ -1173,6 +1242,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a78eb155da9bcf0468c018f625f764e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameOverUI
+--- !u!1 &795492547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 795492548}
+  - component: {fileID: 795492550}
+  - component: {fileID: 795492549}
+  m_Layer: 0
+  m_Name: PauseUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &795492548
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795492547}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 893839496}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &795492549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795492547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de627bf8be3e53488b86a5c9f66af58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+--- !u!114 &795492550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795492547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
+  m_PanelSettings: {fileID: 11400000, guid: 9b10ed5b25fcb7140b619efb492e4815, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 2c62f17b0f41c5d4aa4677c06f769a49, type: 3}
+  m_SortingOrder: 0
+  m_Position: 0
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
+  m_PivotReferenceSize: 0
+  m_Pivot: 0
+  m_WorldSpaceCollider: {fileID: 0}
 --- !u!4 &850802893 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2954949361678570486, guid: 81347a997149af840833a82abe684fc4, type: 3}
@@ -1216,6 +1353,8 @@ Transform:
   - {fileID: 755403775}
   - {fileID: 1231433336}
   - {fileID: 2064652766}
+  - {fileID: 560095261}
+  - {fileID: 795492548}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &916026491
@@ -2884,9 +3023,9 @@ MonoBehaviour:
   foodPrefab: {fileID: 2304637113580772395, guid: 81347a997149af840833a82abe684fc4, type: 3}
   trashPrefab: {fileID: 7581059369037623158, guid: 570d7ff3fefdafe49850897140a386a7, type: 3}
   spawnInterval: 3
-  spawnArea: {x: 10, y: 1, z: 10}
+  spawnArea: {x: 50, y: 3, z: 50}
   minHeight: 3
-  maxHeight: 12
+  maxHeight: 15
 --- !u!4 &2018896902
 Transform:
   m_ObjectHideFlags: 0
@@ -3047,6 +3186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2064652766}
   - component: {fileID: 2064652767}
+  - component: {fileID: 2064652768}
   m_Layer: 0
   m_Name: SetTimerUI
   m_TagString: Untagged
@@ -3092,6 +3232,18 @@ MonoBehaviour:
   m_PivotReferenceSize: 0
   m_Pivot: 0
   m_WorldSpaceCollider: {fileID: 0}
+--- !u!114 &2064652768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064652765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84d16e624c13a134f9b1a0162d19e9e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!4 &2116688981 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7482480387602550355, guid: 570d7ff3fefdafe49850897140a386a7, type: 3}

@@ -6,9 +6,11 @@ public class MainMenuUI : MonoBehaviour
     private UIDocument uiDocument;
     private VisualElement root;
     private Button playButton;
+    private Button setTimerButton;
     private Button quitButton;
 
     private PlayerController player;
+    private SetTimerUI setTimerUI;
 
     private void Awake()
     {
@@ -16,14 +18,23 @@ public class MainMenuUI : MonoBehaviour
         root = uiDocument.rootVisualElement;
 
         playButton = root.Q<Button>("PlayButton");
+        setTimerButton = root.Q<Button>("SetTimerButton");
         quitButton = root.Q<Button>("QuitButton");
 
         playButton.clicked += PlayButtonOnclicked;
+        setTimerButton.clicked += SetTimerButtonOnclicked;
         quitButton.clicked += QuitButtonOnclicked;
 
         root.style.display = DisplayStyle.None;
 
         player = FindObjectOfType<PlayerController>();
+        setTimerUI = FindObjectOfType<SetTimerUI>();
+    }
+
+    private void SetTimerButtonOnclicked()
+    {
+        HideMainMenu();
+        setTimerUI.ShowTimerUI();
     }
 
     private void Start()
@@ -53,6 +64,10 @@ public class MainMenuUI : MonoBehaviour
 
     private void PlayButtonOnclicked()
     {
+        var gameUI = FindObjectOfType<GameUI>();
+        if (gameUI != null)
+            gameUI.ResetFoodGoalLabel();
+        
         HideMainMenu();
     }
 

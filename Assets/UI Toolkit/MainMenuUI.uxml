@@ -1,9 +1,10 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/Stylesheet.uss?fileID=7433441132597879392&amp;guid=762671e1a4df9c443b7d386e6e71f8e0&amp;type=3#Stylesheet" />
-    <ui:VisualElement style="flex-grow: 1; justify-content: center; flex-shrink: 0; align-items: center; flex-direction: column; flex-wrap: nowrap;">
+    <ui:VisualElement style="flex-grow: 1; justify-content: center; flex-shrink: 0; align-items: center; flex-direction: column; flex-wrap: nowrap; background-color: rgba(0, 0, 0, 0.71);">
         <ui:Label text="Underwater Game" name="TitleLabel" class="label title-label" style="-unity-text-align: upper-center;" />
         <ui:VisualElement style="flex-grow: 0; justify-content: center; align-items: center;">
             <ui:Button text="Play" name="PlayButton" class="button play-button" />
+            <ui:Button text="Set Timer" name="SetTimerButton" class="button play-button main-button" />
             <ui:Button text="Quit" name="QuitButton" class="button quit-button" />
         </ui:VisualElement>
     </ui:VisualElement>

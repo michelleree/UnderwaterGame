@@ -51,7 +51,6 @@ public class PlayerController : MonoBehaviour
         Vector3 newPosition = rb.position + worldDir * moveSpeed * Time.fixedDeltaTime;
         rb.MovePosition(newPosition);
 
-        // Lean rotation
         float targetZ = moveX * maxLeanAngle;
         Vector3 euler = model.localEulerAngles;
         if (euler.z > 180f) euler.z -= 360f;
