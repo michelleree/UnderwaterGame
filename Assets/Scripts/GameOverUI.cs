@@ -50,7 +50,7 @@ public class GameOverUI : MonoBehaviour
         
         var gameUI = FindObjectOfType<GameUI>();
         if (gameUI != null)
-            gameUI.ResetFoodGoalLabel();
+            gameUI.ResetUIAndPlayer();
 
         Time.timeScale = 1f;
     }

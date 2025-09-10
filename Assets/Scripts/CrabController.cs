@@ -11,6 +11,13 @@ public class CrabController : MonoBehaviour
 
     void Start()
     {
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.mass = 0.1f;
+            rb.linearDamping = 5f;
+            rb.useGravity = true;
+        }
         ChooseNewDirection();
     }
 

@@ -16,6 +16,9 @@ public class ObjectCollector : MonoBehaviour
 
     private void Start()
     {
+        foodCount = 0;
+        health = 5;
+        
         gameOverUI = FindObjectOfType<GameOverUI>();
         gameWinUI = FindObjectOfType<GameWinUI>();
         setTimerUI = FindObjectOfType<SetTimerUI>();
@@ -43,6 +46,8 @@ public class ObjectCollector : MonoBehaviour
         {
             health--;
             Destroy(collider.transform.parent.gameObject);
+            gameUI.UpdateHearts(health);
+            gameUI.UpdateHealthBar(health);
             Debug.Log("Health: " + health);
             trashCollected.Invoke();
 
